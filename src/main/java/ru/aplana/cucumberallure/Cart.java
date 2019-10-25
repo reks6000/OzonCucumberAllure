@@ -33,4 +33,8 @@ public class Cart {
         res = res.concat(maxCostProduct.toString());
         return res;
     }
+
+    public void clear() {
+        products.clear();
+    }
 }

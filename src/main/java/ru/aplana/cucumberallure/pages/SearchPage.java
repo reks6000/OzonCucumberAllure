@@ -9,8 +9,6 @@ import ru.aplana.cucumberallure.Product;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//div[@data-test-id='filter-block-price']//input[@data-test-id='range-filter-from-input']")

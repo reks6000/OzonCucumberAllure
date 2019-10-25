@@ -36,6 +36,7 @@ public class CartPage extends BasePage {
     public void deleteProducts() {
         fw.waitAndClick(deleteButton);
         fw.waitAndClick(deleteConfirmButton);
+        cart.clear();
     }
 
     public void checkEmpty() {
