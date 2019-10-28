@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.aplana.cucumberallure.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchPage extends BasePage {
@@ -48,15 +49,8 @@ public class SearchPage extends BasePage {
         fw.wait(priceCondition);
     }
 
-    public int getOldValue() {
-        return conditions.size();
-    }
-
-    public void checkOldValueChanged(int oldValue) {
-        fw.waitForCondition(conditions, oldValue);
-    }
-
     public void clickCheckbox(String name) {
+        fw.waitForReload();
         int oldValue = conditions.size();
         fw.wait(checkboxes.get(0));
         for (WebElement element : checkboxes) {
@@ -75,6 +69,7 @@ public class SearchPage extends BasePage {
     }
 
     public void addProductToCart(int id) {
+        fw.waitForReload();
         WebElement element = productTiles.get(id);
         if (element.findElement(addToCartButton).getText().equals("В корзину")) {
             fw.waitAndClick(element.findElement(addToCartButton));
@@ -82,8 +77,26 @@ public class SearchPage extends BasePage {
         }
     }
 
-    public void addProductsToCart(List<Integer> ids) {
+    public void addProductsToCart(String param, String counter) {
         fw.waitForReload();
+        int count = Integer.parseInt(counter);
+        ArrayList<Integer> ids = new ArrayList<>();
+        if (param.equals("нечётных")) {
+            for (int i = 0; i < count*2; i++) {
+                if (i%2 == 0) {
+                    ids.add(i);
+                }
+            }
+        } else if (param.equals("чётных")) {
+            for (int i = 0; i < count*2; i++) {
+                if (i%2 == 1) {
+                    ids.add(i);
+                }
+            }
+        } else {
+            Assert.fail("Неверный параметр чётности продуктов");
+        }
+        System.out.println(ids);
         for (int i = 0; i < productTiles.size(); i++) {
             if (ids.contains(i)) {
                 addProductToCart(i);

@@ -6,9 +6,15 @@ import java.util.ArrayList;
 
 public class Cart {
     ArrayList<Product> products = new ArrayList<>();
+    int quantity = 0;
 
     public void add(Product item) {
         products.add(item);
+        quantity++;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void checkProduct (String name) {
@@ -36,5 +42,6 @@ public class Cart {
 
     public void clear() {
         products.clear();
+        quantity = 0;
     }
 }

@@ -1,7 +1,6 @@
 package ru.aplana.cucumberallure.pages;
 
 import io.qameta.allure.Attachment;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import ru.aplana.cucumberallure.Cart;
 import ru.aplana.cucumberallure.Framework;
 import ru.aplana.cucumberallure.Init;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class BasePage {
     WebDriver driver;

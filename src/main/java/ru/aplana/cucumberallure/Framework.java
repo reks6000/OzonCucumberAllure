@@ -3,10 +3,7 @@ package ru.aplana.cucumberallure;
 import junit.framework.ComparisonFailure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,8 +32,14 @@ public class Framework {
         return element;
     }
 
+//    public WebElement wait(WebElement element) {
+//        wait.until(ExpectedConditions.visibilityOf(element));
+//        return element;
+//    }
+
     public WebElement wait(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         return element;
     }
 
@@ -133,9 +136,26 @@ public class Framework {
         wait.until((ExpectedCondition<Boolean>) driver -> (conditions.size() > oldValue));
     }
 
-    public void waitForReload()
-    {
-        verifyWait.until((ExpectedCondition<Boolean>) driver -> !(driver.findElements(By.xpath("//div[@class='parandja']")).size() > 0));
+//    public void waitForReload()
+//    {
+//        verifyWait.until((ExpectedCondition<Boolean>) driver -> !(driver.findElements(By.xpath("//div[@class='parandja']")).size() > 0));
+//    }
+
+    public void waitForReload() {
+        new WebDriverWait(driver, 45)
+                .until((ExpectedCondition<Boolean>) webDriver -> !isElementPresent(By.xpath("//div[contains(@class , 'parandja')]")));
+    }
+
+
+    public boolean isElementPresent(By locator) {
+        try{
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            return driver.findElement(locator).isDisplayed();
+        } catch (Exception e) {
+            driver.manage().timeouts().implicitlyWait(45,TimeUnit.SECONDS);
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean verify(WebElement element) {

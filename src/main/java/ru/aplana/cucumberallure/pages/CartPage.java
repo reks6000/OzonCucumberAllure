@@ -29,8 +29,9 @@ public class CartPage extends BasePage {
         }
     }
 
-    public void checkNumberOfProducts(String num) {
-        Assert.assertEquals("Неверное количество товара", num, cartInfo.getText().split(" ")[0]);
+    public void checkNumberOfProducts() {
+        String expected = Integer.toString(cart.getQuantity());
+        Assert.assertEquals("Неверное количество товара", expected, cartInfo.getText().split(" ")[0]);
     }
 
     public void deleteProducts() {

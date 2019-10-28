@@ -54,9 +54,9 @@ public class PageSteps {
         searchPage.clickExpand();
     }
 
-    @Когда("пользователь кладёт в корзину продукты")
-    public void doWithParam(List<Integer> ids) {
-        searchPage.addProductsToCart(ids);
+    @Когда("пользователь кладёт в корзину \"(.*)\" \"(.*)\" продуктов")
+    public void doWithParam(String count, String param) {
+        searchPage.addProductsToCart(param, count);
     }
 
     @Когда("пользователь переходит в корзину")
@@ -69,9 +69,9 @@ public class PageSteps {
         cartPage.checkProductsList();
     }
 
-    @Когда("проверка количества товара \"(.*)\"")
-    public void checkNumberOfProducts(String num) {
-        cartPage.checkNumberOfProducts(num);
+    @Когда("проверка количества товара")
+    public void checkNumberOfProducts() {
+        cartPage.checkNumberOfProducts();
     }
 
     @Когда("пользователь удаляет товар из корзины")
