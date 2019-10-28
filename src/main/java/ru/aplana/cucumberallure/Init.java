@@ -37,11 +37,6 @@ public class Init {
     }
 
     public static void tearDown(){
-        try {
-            sleep(3000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         driver.quit();
     }
 
