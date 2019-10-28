@@ -41,6 +41,7 @@ public class CartPage extends BasePage {
     }
 
     public void checkEmpty() {
+        fw.waitForReload();
         try {
             fw.wait(cartIsEmpty);
         } catch (Exception e) {

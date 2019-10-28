@@ -7,8 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-
 public class Init {
     private static TestProperties props = TestProperties.getInstance();
     private static WebDriver driver;

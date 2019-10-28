@@ -5,8 +5,6 @@ import ru.aplana.cucumberallure.pages.CartPage;
 import ru.aplana.cucumberallure.pages.MainPage;
 import ru.aplana.cucumberallure.pages.SearchPage;
 
-import java.util.List;
-
 //    Сценарий 1
 //            1 Перейдите на сервис http://www.ozon.ru/
 //            2 Выполните поиск по «iphone»
@@ -44,9 +42,7 @@ public class PageSteps {
 
     @Когда("пользователь нажимает на чекбокс \"(.*)\"")
     public void clickCheckbox(String name) {
-//        int oldValue = searchPage.getOldValue();
         searchPage.clickCheckbox(name);
-//        searchPage.checkOldValueChanged(oldValue);
     }
 
     @Когда("пользователь раскрывает категорию \"Бренды\"")
